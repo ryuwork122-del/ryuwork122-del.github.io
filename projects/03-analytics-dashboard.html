@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Theme boot: applies the saved theme BEFORE the stylesheet loads, so there
+     is no flash of the wrong theme and the choice survives a hard refresh.
+     Pure ASCII on purpose, so it can never be mangled by text encoding. -->
+<script>
+(function () {
+  try {
+    var m = document.cookie.match(/(?:^|;\s*)ak-theme=(dark|light)/);
+    var t = null;
+    try { t = window.localStorage.getItem("ak-theme"); } catch (e1) { t = null; }
+    if (t !== "dark" && t !== "light") { t = m ? m[1] : null; }
+    if (t !== "dark" && t !== "light") {
+      t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e2) { /* fall through to the stylesheet default */ }
+})();
+</script>
+<title>Analytics Command Center — Arunav Kundu</title>
+<meta name="description" content="Case study: a warehouse-to-dashboard data pipeline that turns messy operational exports into one live view of funnel, retention and revenue health." />
+<meta name="author" content="Arunav Kundu" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#07070c" />
+<link rel="canonical" href="https://arunavkundu.example.com/projects/03-analytics-dashboard.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Analytics Command Center — Arunav Kundu" />
+<meta property="og:description" content="A warehouse-to-dashboard pipeline producing one live view of funnel, retention and revenue health." />
+<meta property="og:url" content="https://arunavkundu.example.com/projects/03-analytics-dashboard.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='54' font-weight='bold' fill='white' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css?v=6" />
+</head>
+
+<body>
+<canvas id="scene3d" aria-hidden="true"></canvas>
+<div class="scene-fallback" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../index.html" aria-label="Arunav Kundu — home">
+      <span class="brand__mark" aria-hidden="true">AK</span>
+      <span>Arunav Kundu</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main">
+      <a class="nav__link" href="../index.html#about">About</a>
+      <a class="nav__link is-active" href="../index.html#projects">Projects</a>
+      <a class="nav__link" href="../index.html#skills">Skills</a>
+      <a class="nav__link" href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.2v2.1M12 19.7v2.1M4.4 4.4l1.5 1.5M18.1 18.1l1.5 1.5M2.2 12h2.1M19.7 12h2.1M4.4 19.6l1.5-1.5M18.1 5.9l1.5-1.5" /></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 14.3A8.5 8.5 0 1 1 9.7 3.6a6.8 6.8 0 0 0 10.7 10.7Z" /></svg>
+      </button>
+      <button class="icon-btn nav__toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h17M3.5 12h17M3.5 17h17" /></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="detail-hero">
+    <div class="container">
+      <a class="back-link" href="../index.html#projects">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6M11 18l-6-6 6-6" /></svg>
+        All projects
+      </a>
+
+      <span class="eyebrow">Project 03 — Data</span>
+      <h1 class="detail-title">Analytics Command Center</h1>
+      <p class="detail-lede">
+        A warehouse-to-dashboard pipeline that turns messy operational exports into a single
+        live view of funnel, retention and revenue health.
+      </p>
+
+      <div class="detail-meta">
+        <div class="detail-meta__item"><span>Role</span><b>Data engineering &amp; analysis</b></div>
+        <div class="detail-meta__item"><span>Year</span><b>2025</b></div>
+        <div class="detail-meta__item"><span>Type</span><b>Reporting platform</b></div>
+        <div class="detail-meta__item"><span>Stack</span><b>SQL · dbt · pandas · Power BI</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="detail-media">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M8 40h32" />
+        <rect x="11" y="26" width="6.5" height="14" rx="1.6" />
+        <rect x="21" y="18" width="6.5" height="22" rx="1.6" />
+        <rect x="31" y="10" width="6.5" height="30" rx="1.6" />
+      </svg>
+      <span class="detail-media__note">Replace with a screenshot: <code>assets/03-cover.png</code></span>
+    </div>
+  </div>
+
+  <section class="section section--tight" style="padding-top: 0;">
+    <div class="container">
+      <div class="detail-grid">
+        <div class="detail-body">
+          <h2>The problem</h2>
+          <p>
+            Reporting ran on a spreadsheet that had been copied forward for years. Every
+            question — how many trials converted, which cohort retained, what this month's
+            revenue actually was — needed a fresh manual export and a few hours of formula
+            surgery. Two people running the same query got different numbers, and nobody could
+            explain why.
+          </p>
+
+          <h2>Approach</h2>
+          <p>
+            First, definitions. Before writing a pipeline I wrote down what each metric means in
+            plain language — what counts as an active user, when a trial becomes a customer, how
+            refunds are handled. That document is the actual deliverable; the SQL just implements it.
+          </p>
+          <p>
+            The pipeline lands raw source exports in a staging schema with no transformation at
+            all, so the original data is always recoverable. From there, <strong>dbt</strong> models
+            clean and deduplicate into staging views, join into conformed dimensions and facts,
+            and finally expose a small set of mart tables shaped for the questions people
+            actually ask. Every model has tests: unique keys, not-null constraints and
+            referential checks between facts and dimensions.
+          </p>
+          <p>
+            <strong>pandas</strong> handles the parts SQL is awkward at — irregular date parsing,
+            fuzzy matching of customer names across systems, and one-off reconciliation — and
+            writes its results back into the warehouse so everything downstream reads from a
+            single source of truth.
+          </p>
+          <p>
+            The front end is <strong>Power BI</strong> on a star schema: three report pages
+            (acquisition funnel, retention cohorts, revenue) with consistent date filtering and
+            drill-through to the underlying records.
+          </p>
+
+          <h2>What was hard</h2>
+          <p>
+            Duplicate customers. The same organisation existed under three spellings across two
+            systems, and simple joins multiplied rows and quietly inflated revenue. Matching
+            needed normalisation, blocking on a shared key and a review queue for ambiguous
+            cases — with the match decisions stored so they are reproducible rather than baked
+            into an ad-hoc query.
+          </p>
+          <p>
+            Time zones came second. Timestamps were recorded in local time without an offset,
+            which made "daily" meaningless across regions. Everything now lands in UTC at
+            ingestion and converts only at the presentation layer.
+          </p>
+
+          <h2>Outcome</h2>
+          <p>
+            The metrics are defined once in tested SQL, so the same question gives the same
+            answer whoever asks it. Refreshes run on a schedule, report builders work from a
+            documented star schema instead of raw exports, and data quality problems surface as
+            a failing test before they reach a chart.
+          </p>
+
+          <h2>Takeaways</h2>
+          <p>
+            Most analytics problems are definition problems wearing a technical costume. Write
+            the metric definitions down, test them in code, and the dashboards almost build
+            themselves.
+          </p>
+        </div>
+
+        <aside class="detail-side">
+          <div class="card side-card">
+            <h3>Stack</h3>
+            <div class="tech-row">
+              <span class="tech">SQL</span>
+              <span class="tech">dbt</span>
+              <span class="tech">pandas</span>
+              <span class="tech">Power BI</span>
+              <span class="tech">Postgres</span>
+            </div>
+          </div>
+
+          <div class="card side-card">
+            <h3>Links</h3>
+            <a class="btn btn--primary btn--sm" href="#" data-config="github">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+              View repository
+            </a>
+            <a class="btn btn--ghost btn--sm" href="../index.html#contact">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" /><path d="m3.6 7 8.4 6 8.4-6" /></svg>
+              Ask me about it
+            </a>
+          </div>
+
+          <div class="card side-card">
+            <h3>Facts</h3>
+            <div class="spec-list">
+              <div class="spec"><span>Stage</span><b>In production</b></div>
+              <div class="spec"><span>Model</span><b>Star schema</b></div>
+              <div class="spec"><span>Quality</span><b>Tested in CI</b></div>
+              <div class="spec"><span>Refresh</span><b>Scheduled</b></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <nav class="next-project" aria-label="Next project">
+        <div>
+          <span class="next-project__label">Next project</span>
+          <a class="next-project__link" href="04-fullstack-saas.html">
+            <span class="next-project__title">Multi-Tenant SaaS App</span>
+          </a>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="04-fullstack-saas.html">
+          Continue
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+        </a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>&copy; <span id="year">2026</span> Arunav Kundu.</p>
+    <div class="footer__socials">
+      <a class="mini-link" href="#" aria-label="GitHub" data-config="github"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg></a>
+      <a class="mini-link" href="#" aria-label="LinkedIn" data-config="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" /><path d="M7.6 10.4v6.2M7.6 7.6h.01M11.8 16.6v-3.6a2.4 2.4 0 0 1 4.8 0v3.6M11.8 10.4v6.2" /></svg></a>
+      <a class="mini-link" href="#" aria-label="Instagram" data-config="instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.3 6.7h.01" /></svg></a>
+      <a class="mini-link" href="#" aria-label="Email" data-config="email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" /><path d="m3.6 7 8.4 6 8.4-6" /></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../js/scene.js?v=6"></script>
+<script src="../js/main.js?v=6"></script>
+</body>
+</html>

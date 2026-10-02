@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Theme boot: applies the saved theme BEFORE the stylesheet loads, so there
+     is no flash of the wrong theme and the choice survives a hard refresh.
+     Pure ASCII on purpose, so it can never be mangled by text encoding. -->
+<script>
+(function () {
+  try {
+    var m = document.cookie.match(/(?:^|;\s*)ak-theme=(dark|light)/);
+    var t = null;
+    try { t = window.localStorage.getItem("ak-theme"); } catch (e1) { t = null; }
+    if (t !== "dark" && t !== "light") { t = m ? m[1] : null; }
+    if (t !== "dark" && t !== "light") {
+      t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e2) { /* fall through to the stylesheet default */ }
+})();
+</script>
+
+<!-- ==========================================================================
+     SEO  ·  EDIT ME
+     Replace https://arunavkundu.example.com with your real domain once hosted.
+     ========================================================================== -->
+<title>Arunav Kundu — AI/ML Engineer, Full-Stack Developer & Creative Technologist</title>
+<meta name="description" content="Arunav Kundu builds production AI and automation systems, full-stack web apps, data pipelines, Godot games, and motion graphics. AI/ML engineering, full-stack development, data analysis, graphic design, video editing and game development in one practice." />
+<meta name="keywords" content="Arunav Kundu, AI engineer, ML engineer, full-stack developer, data analyst, AI automation, graphic designer, video editor, game developer, Godot, DaVinci Resolve, Figma, Python, PyTorch" />
+<meta name="author" content="Arunav Kundu" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#07070c" />
+<link rel="canonical" href="https://arunavkundu.example.com/" />
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Arunav Kundu" />
+<meta property="og:title" content="Arunav Kundu — AI/ML Engineer, Full-Stack Developer & Creative Technologist" />
+<meta property="og:description" content="Production AI and automation systems, full-stack web apps, data pipelines, Godot games, and motion graphics — engineered end to end." />
+<meta property="og:url" content="https://arunavkundu.example.com/" />
+<meta property="og:image" content="https://arunavkundu.example.com/assets/og-cover.png" />
+<meta property="og:image:alt" content="Arunav Kundu — portfolio cover" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Arunav Kundu — AI/ML Engineer, Full-Stack Developer & Creative Technologist" />
+<meta name="twitter:description" content="Production AI and automation systems, full-stack web apps, data pipelines, Godot games, and motion graphics." />
+<meta name="twitter:image" content="https://arunavkundu.example.com/assets/og-cover.png" />
+<meta name="twitter:creator" content="@Iamrishi2354" />
+
+<!-- Icons -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-size='54' font-weight='bold' fill='white' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E" />
+
+<!-- Fonts (optional — remove for fully offline use, falls back to system fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css?v=6" />
+
+<!-- Structured data: helps search engines understand who you are -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Arunav Kundu",
+  "jobTitle": "AI/ML Engineer, Full-Stack Developer & Creative Technologist",
+  "description": "Builds production AI and automation systems, full-stack web applications, data pipelines, Godot games and motion graphics.",
+  "knowsAbout": [
+    "Artificial Intelligence", "Machine Learning", "AI Automation",
+    "Full-Stack Web Development", "Data Analysis", "Game Development",
+    "Graphic Design", "Video Editing"
+  ],
+  "url": "https://arunavkundu.example.com/",
+  "sameAs": [
+    "https://github.com/ryuwork122-del",
+    "https://www.linkedin.com/in/arunav-kundu-1735a2439/",
+    "https://www.instagram.com/ryu_nexus_official/",
+    "https://x.com/Iamrishi2354"
+  ]
+}
+</script>
+</head>
+
+<body>
+<canvas id="scene3d" aria-hidden="true"></canvas>
+<div class="scene-fallback" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==========================================================================
+     NAVBAR
+     ========================================================================== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Arunav Kundu — home">
+      <span class="brand__mark" aria-hidden="true">AK</span>
+      <span>Arunav Kundu</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Main">
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#projects">Projects</a>
+      <a class="nav__link" href="#skills">Skills</a>
+      <a class="nav__link" href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button"
+              aria-label="Switch colour theme" title="Switch colour theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2" />
+          <path d="M12 2.2v2.1M12 19.7v2.1M4.4 4.4l1.5 1.5M18.1 18.1l1.5 1.5M2.2 12h2.1M19.7 12h2.1M4.4 19.6l1.5-1.5M18.1 5.9l1.5-1.5" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.4 14.3A8.5 8.5 0 1 1 9.7 3.6a6.8 6.8 0 0 0 10.7 10.7Z" />
+        </svg>
+      </button>
+
+      <button class="icon-btn nav__toggle" id="navToggle" type="button"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.5 7h17M3.5 12h17M3.5 17h17" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+<section class="hero" aria-labelledby="heroName">
+  <div class="container">
+    <div class="hero__grid scene-3d">
+
+      <div class="hero__copy">
+        <span class="badge">
+          <span class="badge__dot" aria-hidden="true"></span>
+          Available for new projects
+        </span>
+
+        <h1 class="hero__name" id="heroName">Arunav&nbsp;Kundu</h1>
+
+        <p class="hero__role" aria-live="polite">
+          <span class="hero__role-label">I work as a</span>
+          <span class="gradient-text" id="roleType"></span><span class="cursor" aria-hidden="true"></span>
+        </p>
+
+        <p class="hero__text">
+          One practice spanning the whole build — from training and shipping AI models,
+          to the interfaces and data pipelines around them, to the video, visuals and
+          games that carry the idea to an audience.
+        </p>
+
+        <div class="hero__cta depth-near">
+          <a class="btn btn--primary" href="#projects">
+            View my work
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+          </a>
+          <a class="btn btn--ghost" href="#contact">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
+            Get in touch
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__stat"><b>8</b><span>Disciplines</span></div>
+          <div class="hero__stat"><b>AI + Full-Stack</b><span>Core focus</span></div>
+          <div class="hero__stat"><b>End-to-end</b><span>Research → ship</span></div>
+        </div>
+      </div>
+
+      <!-- Decorative terminal card -->
+      <div class="terminal depth-far" aria-hidden="true">
+        <div class="terminal__bar">
+          <span class="terminal__dot"></span>
+          <span class="terminal__dot"></span>
+          <span class="terminal__dot"></span>
+          <span class="terminal__title">arunav — profile.py</span>
+        </div>
+        <div class="terminal__body">
+          <span class="ln"><span class="c"># who am i</span></span>
+          <span class="ln"><span class="p">profile</span> = {</span>
+          <span class="ln">  <span class="k">"role"</span>: <span class="s">"AI/ML Engineer"</span>,</span>
+          <span class="ln">  <span class="k">"also"</span>: [<span class="s">"full-stack"</span>,</span>
+          <span class="ln">           <span class="s">"data analyst"</span>,</span>
+          <span class="ln">           <span class="s">"game dev"</span>,</span>
+          <span class="ln">           <span class="s">"graphic design"</span>,</span>
+          <span class="ln">           <span class="s">"video editing"</span>],</span>
+          <span class="ln">  <span class="k">"automation"</span>: <span class="s">True</span>,</span>
+          <span class="ln">  <span class="k">"ships"</span>: <span class="s">"to production"</span>,</span>
+          <span class="ln">}</span>
+          <span class="ln"> </span>
+          <span class="ln"><span class="p">&gt;&gt;&gt;</span> profile[<span class="s">"role"</span>]</span>
+          <span class="ln"><span class="s">'AI/ML Engineer'</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="scroll-hint__line"></span>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     ABOUT
+     ========================================================================== -->
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="container">
+    <div class="about__grid">
+
+      <div class="reveal">
+        <span class="eyebrow">About</span>
+        <h2 class="section-title" id="aboutTitle">
+          I build things that <span class="gradient-text">think, ship and look good</span>.
+        </h2>
+
+        <div class="about__body" style="margin-top: 28px;">
+          <p>
+            I'm a developer and creative technologist who works across the full arc of a
+            product. On the engineering side that means <strong>AI and machine learning</strong>,
+            <strong>AI automation</strong>, full-stack web applications and the
+            <strong>data analysis</strong> that tells you what is actually working.
+          </p>
+          <p>
+            On the creative side it means <strong>graphic design</strong>,
+            <strong>video editing</strong> in DaVinci Resolve and <strong>game development</strong>
+            in Godot — so the work doesn't stop at a working prototype. It gets finished,
+            explained and put in front of people.
+          </p>
+          <p>
+            I like problems that need more than one discipline: a model that needs an interface,
+            a dataset that needs a story, a game that needs a shader and a trailer. If it can be
+            automated, I will automate it. If it can be measured, I will measure it.
+          </p>
+        </div>
+
+                <div class="pill-row" role="list" aria-label="Disciplines and capabilities">
+          <span class="pill" role="listitem" style="--i: 0ms">
+            <span class="pill__num" aria-hidden="true">01</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Artificial Intelligence
+          </span>
+          <span class="pill" role="listitem" style="--i: 65ms">
+            <span class="pill__num" aria-hidden="true">02</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Machine Learning
+          </span>
+          <span class="pill" role="listitem" style="--i: 130ms">
+            <span class="pill__num" aria-hidden="true">03</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            AI Automation
+          </span>
+          <span class="pill" role="listitem" style="--i: 195ms">
+            <span class="pill__num" aria-hidden="true">04</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Full-Stack Development
+          </span>
+          <span class="pill" role="listitem" style="--i: 260ms">
+            <span class="pill__num" aria-hidden="true">05</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Data Analysis
+          </span>
+          <span class="pill" role="listitem" style="--i: 325ms">
+            <span class="pill__num" aria-hidden="true">06</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Game Development
+          </span>
+          <span class="pill" role="listitem" style="--i: 390ms">
+            <span class="pill__num" aria-hidden="true">07</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Graphic Design
+          </span>
+          <span class="pill" role="listitem" style="--i: 455ms">
+            <span class="pill__num" aria-hidden="true">08</span>
+            <span class="pill__dot" aria-hidden="true"></span>
+            Video Editing
+          </span>
+        </div>
+      </div>
+
+      <div class="fact-list reveal">
+        <article class="fact">
+          <span class="fact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" /><circle cx="12" cy="12" r="3.4" /></svg>
+          </span>
+          <div>
+            <h3>AI / ML Engineering</h3>
+            <p>Model training, evaluation and deployment with PyTorch, TensorFlow and scikit-learn.</p>
+          </div>
+        </article>
+
+        <article class="fact">
+          <span class="fact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 9-12h-7z" /></svg>
+          </span>
+          <div>
+            <h3>AI Automation</h3>
+            <p>Agent and workflow pipelines that take repetitive work off the table entirely.</p>
+          </div>
+        </article>
+
+        <article class="fact">
+          <span class="fact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 6 3 12l5 6M16 6l5 6-5 6M13.5 4l-3 16" /></svg>
+          </span>
+          <div>
+            <h3>Full-Stack &amp; Data</h3>
+            <p>React and Node applications on top of clean SQL, pandas and Power BI reporting.</p>
+          </div>
+        </article>
+
+        <article class="fact">
+          <span class="fact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="14" rx="2.5" /><path d="M10 9.2v5.6l5-2.8z" /></svg>
+          </span>
+          <div>
+            <h3>Creative &amp; Interactive</h3>
+            <p>Identity and UI in Figma, edits in DaVinci Resolve, interactive systems in Godot.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PROJECTS
+     ========================================================================== -->
+<section class="section" id="projects" aria-labelledby="projectsTitle">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Projects</span>
+      <h2 class="section-title" id="projectsTitle">Selected work</h2>
+      <p class="section-sub">
+        Six areas of the practice. Open any card for the full case study — approach,
+        stack and results.
+      </p>
+    </div>
+
+    <div class="projects__grid">
+
+      <!-- CARD 1 -->
+      <a class="card project-card reveal" href="projects/01-ai-automation-platform.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">AI / ML</span>
+          <span class="project-card__num">01</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.6" /><circle cx="12" cy="36" r="3.6" />
+            <circle cx="36" cy="12" r="3.6" /><circle cx="36" cy="36" r="3.6" />
+            <circle cx="24" cy="24" r="4.6" />
+            <path d="M15 14.2 21 21M33 14.2 27 21M15 33.8 21 27M33 33.8 27 27" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Automation Agent Platform</h3>
+          <p class="project-card__desc">
+            An LLM agent that reads inbound requests, classifies intent and executes multi-step
+            workflows against internal APIs — with a human approval gate on anything destructive.
+          </p>
+          <div class="tech-row">
+            <span class="tech">Python</span>
+            <span class="tech">FastAPI</span>
+            <span class="tech">LangChain</span>
+            <span class="tech">Postgres</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Repository placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 2 -->
+      <a class="card project-card reveal" href="projects/02-vision-defect-detection.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">Computer Vision</span>
+          <span class="project-card__num">02</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M6 24s7.4-11 18-11 18 11 18 11-7.4 11-18 11S6 24 6 24Z" />
+            <circle cx="24" cy="24" r="5" />
+            <path d="M24 13V8M24 40v-5M13 24H8M40 24h-5" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Vision Defect Detection</h3>
+          <p class="project-card__desc">
+            A convolutional vision model that flags manufacturing defects from a conveyor
+            camera feed, tuned for high recall so nothing ships unchecked.
+          </p>
+          <div class="tech-row">
+            <span class="tech">PyTorch</span>
+            <span class="tech">OpenCV</span>
+            <span class="tech">ONNX</span>
+            <span class="tech">Docker</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Repository placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 3 -->
+      <a class="card project-card reveal" href="projects/03-analytics-dashboard.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">Data</span>
+          <span class="project-card__num">03</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M8 40h32" />
+            <rect x="11" y="26" width="6.5" height="14" rx="1.6" />
+            <rect x="21" y="18" width="6.5" height="22" rx="1.6" />
+            <rect x="31" y="10" width="6.5" height="30" rx="1.6" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Analytics Command Center</h3>
+          <p class="project-card__desc">
+            A warehouse-to-dashboard pipeline that turns messy operational exports into a
+            single live view of funnel, retention and revenue health.
+          </p>
+          <div class="tech-row">
+            <span class="tech">SQL</span>
+            <span class="tech">dbt</span>
+            <span class="tech">pandas</span>
+            <span class="tech">Power BI</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Repository placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 4 -->
+      <a class="card project-card reveal" href="projects/04-fullstack-saas.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">Web</span>
+          <span class="project-card__num">04</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="6" y="10" width="36" height="28" rx="3.4" />
+            <path d="M6 18h36" />
+            <circle cx="11.5" cy="14" r="1.1" /><circle cx="15.5" cy="14" r="1.1" /><circle cx="19.5" cy="14" r="1.1" />
+            <path d="M13 24h10M13 29h14" />
+            <rect x="29" y="23" width="8" height="9" rx="1.6" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Multi-Tenant SaaS App</h3>
+          <p class="project-card__desc">
+            A production web application with role-based access, Stripe billing, background
+            jobs and an audit trail — built to survive real traffic.
+          </p>
+          <div class="tech-row">
+            <span class="tech">React</span>
+            <span class="tech">TypeScript</span>
+            <span class="tech">Node</span>
+            <span class="tech">Postgres</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Live site placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 5 -->
+      <a class="card project-card reveal" href="projects/05-godot-game.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">Game Dev</span>
+          <span class="project-card__num">05</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M17 16h14a10 10 0 0 1 9.7 7.5l1.6 6.6A4.6 4.6 0 0 1 37.8 35l-2.5-3.4h-22.6L10.2 35a4.6 4.6 0 0 1-4.5-4.9l1.6-6.6A10 10 0 0 1 17 16Z" />
+            <path d="M17 24v5M14.5 26.5h5M30 24.5h.01M33.5 27.5h.01" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Godot Action Prototype</h3>
+          <p class="project-card__desc">
+            A fast, responsive 2D action game in Godot — hand-tuned movement, state-machine
+            enemies and a custom shader pass for lighting.
+          </p>
+          <div class="tech-row">
+            <span class="tech">Godot 4</span>
+            <span class="tech">GDScript</span>
+            <span class="tech">Aseprite</span>
+            <span class="tech">FMOD</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Playable build placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 6 -->
+      <a class="card project-card reveal" href="projects/06-brand-and-motion.html">
+        <div class="project-card__media">
+          <span class="project-card__tag">Design &amp; Motion</span>
+          <span class="project-card__num">06</span>
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 7.5 27.6 19l11.5.1-9.3 6.8 3.5 11.5L24 30.5l-9.3 6.9 3.5-11.5L9 19.1h11.5z" />
+          </svg>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Brand System &amp; Motion Reel</h3>
+          <p class="project-card__desc">
+            A full identity — logo, type scale, colour system and component library in Figma —
+            plus a launch video cut and graded in DaVinci Resolve.
+          </p>
+          <div class="tech-row">
+            <span class="tech">Figma</span>
+            <span class="tech">Illustrator</span>
+            <span class="tech">DaVinci Resolve</span>
+            <span class="tech">After Effects</span>
+          </div>
+          <div class="project-card__foot">
+            <span class="project-card__cta">
+              Read case study
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </span>
+            <span class="project-card__links">
+              <span class="mini-link" title="Reel placeholder">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="projects__note">
+      <strong>These six cards are templates.</strong> Open <code>index.html</code>, search for
+      <code>&lt;!-- CARD 1</code> and edit the title, description and tech tags. Each card's
+      <code>href</code> points at its own page inside <code>projects/</code> — edit those files
+      for the full case study. To add more, duplicate a card and a detail page.
+    </p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SKILLS
+     ========================================================================== -->
+<section class="section" id="skills" aria-labelledby="skillsTitle">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Skills</span>
+      <h2 class="section-title" id="skillsTitle">The toolkit</h2>
+      <p class="section-sub">
+        Depth in AI and full-stack engineering, with working fluency across data and creative tooling.
+      </p>
+    </div>
+
+    <div class="skills__grid">
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 6 3 12l5 6M16 6l5 6-5 6M13.5 4l-3 16" /></svg>
+          </span>
+          <h3>Languages<small>Core</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">Python</span><span class="skill__level">Expert</span></div><div class="bar"><span class="bar__fill" data-level="95"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">JavaScript / TypeScript</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="88"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">SQL</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="85"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">GDScript / C#</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="75"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">HTML / CSS</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="90"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" /><path d="M12 2.6v3.2M12 18.2v3.2M4.4 4.4l2.3 2.3M17.3 17.3l2.3 2.3M2.6 12h3.2M18.2 12h3.2M4.4 19.6l2.3-2.3M17.3 6.7l2.3-2.3" /></svg>
+          </span>
+          <h3>AI &amp; Machine Learning<small>Primary focus</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">PyTorch</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="88"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">TensorFlow / Keras</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="82"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">scikit-learn</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="85"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">LLMs &amp; AI automation</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="90"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Computer vision / OpenCV</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="78"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.4" /><path d="M3 9h18M8 9v11" /></svg>
+          </span>
+          <h3>Web &amp; Backend<small>Full-stack</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">React</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="86"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Node.js / Express</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="84"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">FastAPI / Flask</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="87"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">PostgreSQL / MongoDB</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="80"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Docker &amp; CI/CD</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="76"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 20h16" /><rect x="5.5" y="12" width="3.4" height="8" rx="1" /><rect x="10.3" y="8" width="3.4" height="12" rx="1" /><rect x="15.1" y="4" width="3.4" height="16" rx="1" /></svg>
+          </span>
+          <h3>Data &amp; Analytics<small>Insight</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">pandas / NumPy</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="90"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Power BI</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="84"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Tableau</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="75"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Data cleaning &amp; ETL</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="88"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Statistics &amp; A/B testing</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="79"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.2 14.2 9l6.1.2-4.9 3.7 1.8 6-5.2-3.5-5.2 3.5 1.8-6L3.7 9.2 9.8 9z" /></svg>
+          </span>
+          <h3>Creative<small>Design &amp; motion</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">Figma</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="88"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">DaVinci Resolve</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="86"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Illustrator</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="80"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">After Effects</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="74"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Godot 4</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="78"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="card skill-group reveal">
+        <div class="skill-group__head">
+          <span class="skill-group__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M11 3.5h2M12 3.5v3M6.2 7.4 12 6.5l5.8.9a2 2 0 0 1 1.7 2v6.9a2.2 2.2 0 0 1-2.2 2.2h-1.9l-1.6 2.4h-5.6l-1.6-2.4H5.8a2 2 0 0 1-2.1-2.2V9.4a2 2 0 0 1 1.6-2Z" /></svg>
+          </span>
+          <h3>Tools &amp; Practices<small>Workflow</small></h3>
+        </div>
+        <ul class="skill-list">
+          <li class="skill"><div class="skill__top"><span class="skill__name">Git &amp; GitHub</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="90"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Linux / shell</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="78"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Cloud (AWS / GCP)</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="72"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Testing &amp; code review</span><span class="skill__level">Proficient</span></div><div class="bar"><span class="bar__fill" data-level="76"></span></div></li>
+          <li class="skill"><div class="skill__top"><span class="skill__name">Technical writing</span><span class="skill__level">Advanced</span></div><div class="bar"><span class="bar__fill" data-level="82"></span></div></li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     CONTACT
+     ========================================================================== -->
+<section class="section" id="contact" aria-labelledby="contactTitle">
+  <div class="container">
+    <div class="contact__grid">
+
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title" id="contactTitle">
+          Let's build something <span class="gradient-text">worth shipping</span>.
+        </h2>
+        <p class="section-sub">
+          Whether it's an AI feature, an automation problem, a web app, a dataset that needs
+          sense making, or a game that needs finishing — tell me what you're working on.
+        </p>
+
+        <div class="contact__links">
+          <a class="contact-link" href="mailto:ryuwork122@gmail.com" data-config="email">
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.4" /><path d="m3.6 7 8.4 6 8.4-6" /></svg>
+            </span>
+            <span class="contact-link__meta">
+              <b>Email</b>
+              <span data-config-text="email">ryuwork122@gmail.com</span>
+            </span>
+            <span class="contact-link__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg></span>
+          </a>
+
+          <a class="contact-link" href="https://github.com/ryuwork122-del" target="_blank" rel="noopener noreferrer" data-config="github">
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+            </span>
+            <span class="contact-link__meta">
+              <b>GitHub</b>
+              <span data-config-text="github">github.com/ryuwork122-del</span>
+            </span>
+            <span class="contact-link__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg></span>
+          </a>
+
+          <a class="contact-link" href="https://www.linkedin.com/in/arunav-kundu-1735a2439/" target="_blank" rel="noopener noreferrer" data-config="linkedin">
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3" /><path d="M7.6 10.4v6.2M7.6 7.6h.01M11.8 16.6v-3.6a2.4 2.4 0 0 1 4.8 0v3.6M11.8 10.4v6.2" /></svg>
+            </span>
+            <span class="contact-link__meta">
+              <b>LinkedIn</b>
+              <span data-config-text="linkedin">linkedin.com/in/arunav-kundu-1735a2439</span>
+            </span>
+            <span class="contact-link__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg></span>
+          </a>
+
+          <a class="contact-link" href="https://www.instagram.com/ryu_nexus_official/?hl=en" target="_blank" rel="noopener noreferrer" data-config="instagram">
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.3 6.7h.01" /></svg>
+            </span>
+            <span class="contact-link__meta">
+              <b>Instagram</b>
+              <span data-config-text="instagram">instagram.com/ryu_nexus_official</span>
+            </span>
+            <span class="contact-link__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg></span>
+          </a>
+          <a class="contact-link" href="https://x.com/Iamrishi2354" target="_blank" rel="noopener noreferrer" data-config="twitter">
+            <span class="contact-link__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h3.6l4.7 6.4L17.6 4H21l-6.6 7.6L21.4 20h-3.6l-5-6.8L6.4 20H3l7-8.1z" /></svg>
+            </span>
+            <span class="contact-link__meta">
+              <b>X / Twitter</b>
+              <span data-config-text="twitter">x.com/Iamrishi2354</span>
+            </span>
+            <span class="contact-link__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" /></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <form class="card form reveal" id="contactForm" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cf-subject">Subject</label>
+          <input id="cf-subject" name="subject" type="text" placeholder="AI automation project, web app, video…" />
+        </div>
+
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" placeholder="A few lines about what you need and when." required></textarea>
+        </div>
+
+        <button class="btn btn--primary" type="submit">
+          Send message
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-4.5 16-4.2-6.4z" /></svg>
+        </button>
+
+        <p class="form__hint">
+          Opens your email client with the message ready to send — no backend required.
+        </p>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>&copy; <span id="year">2026</span> Arunav Kundu.</p>
+    <div class="footer__socials">
+      <a class="mini-link" href="https://github.com/ryuwork122-del" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-config="github">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2.2-5.5-2.7M15 21v-3.4a3 3 0 0 0-.9-2.4c2.8-.3 5.7-1.4 5.7-6.1a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.4s-1.1-.3-3.6 1.4a12.3 12.3 0 0 0-6.4 0C5.9 2 4.8 2.3 4.8 2.3a4.5 4.5 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.4 9.2c0 4.6 2.9 5.7 5.7 6.1a3 3 0 0 0-.9 2.3V21" /></svg>
+      </a>
+      <a class="mini-link" href="https://www.linkedin.com/in/arunav-kundu-1735a2439/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-config="linkedin">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" /><path d="M7.6 10.4v6.2M7.6 7.6h.01M11.8 16.6v-3.6a2.4 2.4 0 0 1 4.8 0v3.6M11.8 10.4v6.2" /></svg>
+      </a>
+      <a class="mini-link" href="https://www.instagram.com/ryu_nexus_official/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-config="instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.3 6.7h.01" /></svg>
+      </a>
+      <a class="mini-link" href="https://x.com/Iamrishi2354" target="_blank" rel="noopener noreferrer" aria-label="X" data-config="twitter">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h3.6l4.7 6.4L17.6 4H21l-6.6 7.6L21.4 20h-3.6l-5-6.8L6.4 20H3l7-8.1z" /></svg>
+      </a>
+      <a class="mini-link" href="mailto:ryuwork122@gmail.com" aria-label="Email" data-config="email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4" /><path d="m3.6 7 8.4 6 8.4-6" /></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/scene.js?v=6"></script>
+<script src="js/main.js?v=6"></script>
+</body>
+</html>
